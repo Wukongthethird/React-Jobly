@@ -32,12 +32,12 @@ function App() {
   useEffect(
     function getCurrUser() {
       async function getCurrUserResponse() {
+        setIsloading(true);
         if (token) {
           JoblyApi.token = token;
           const { username } = jwt.decode(token);
           let user = await JoblyApi.getUserInfo(username);
           setCurrentUser(user);
-          setIsloading(true);
           setApplicationIDs(new Set(user.applications))
         }
       }

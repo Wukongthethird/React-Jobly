@@ -19,8 +19,8 @@ function Nav() {
     <div className="Navbar">
     {currentUser
       ?
-      <nav className="Nav navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink exact to="/" className="navbar-brand">
+      <nav className="Nav justify-content-center navbar navbar-expand-lg navbar-light bg-light">
+        <NavLink exact to="/" className="navbar-link">
           Jobly
         </NavLink>
         <NavLink exact to="/companies" className="nav-link">
@@ -37,14 +37,14 @@ function Nav() {
         </NavLink>
       </nav>
     :
-    <nav className="Nav navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink exact to="/" className="nav-brand">
+    <nav className="Nav justify-content-center navbar navbar-expand-lg navbar-light bg-light" variant="tabs">
+        <NavLink as="li" exact to="/" className="nav-link">
           Jobly
         </NavLink>
-        <NavLink exact to="/login" className="nav-link">
+        <NavLink as="li" exact to="/login" className="nav-link">
           Login
         </NavLink>
-        <NavLink exact to="/signup" className="nav-link">
+        <NavLink  as="li" exact to="/signup" className="nav-link">
           SignUp
         </NavLink>
       </nav>

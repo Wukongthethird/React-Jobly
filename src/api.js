@@ -1,6 +1,10 @@
 import axios from "axios";
 import jwt from "jsonwebtoken";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+
+// const BASE_URL = 'https://jobly-forever.herokuapp.com'
+
 
 /** API Class.
  *
@@ -10,7 +14,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
  *
  */
 
-class JoblyApi {
+class FrienderApi {
   // the token for interactive with the API will be stored here.
   static token;
 
@@ -18,7 +22,7 @@ class JoblyApi {
 
     console.debug("API Call:", endpoint, data, method);
     const url = `${BASE_URL}/${endpoint}`;
-    const headers = { Authorization: `Bearer ${JoblyApi.token}` };
+    const headers = { Authorization: `Bearer ${this.token}` };
     const params = method === "get" ? data : {};
 
     try {
@@ -26,7 +30,7 @@ class JoblyApi {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
       console.error("API Error:", err.response);
-      let message = err.response.data.error.message;
+      let message = err.response?.data.error.message;
       throw Array.isArray(message) ? message : [message];
     }
   }
@@ -111,4 +115,4 @@ class JoblyApi {
 //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
 //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-export default JoblyApi;
+export default FrienderApi;

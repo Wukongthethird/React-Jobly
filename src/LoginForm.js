@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import UserContext from "./UserContext";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 // import { useHistory } from "react-router-dom";
 
 function LoginForm() {
@@ -24,10 +27,12 @@ function LoginForm() {
   }
 
   return (
-    <div className="LoginForm" style={{ padding: "8px" }}>
+    <div className="LoginForm col-md-6 offset-md-3 col-lg-4 offset-lg-4" style={{ padding: "8px" }}>
+        <Card>
+        <Card.Body>
+     
       <form className="Login-page" onSubmit={handleSubmit}>
         <input
-          style={{ width: "400px" }}
           id="Login-username"
           name="username"
           className="form-control"
@@ -37,17 +42,20 @@ function LoginForm() {
           required
         />
         <input
-          style={{ width: "400px" }}
           id="Login-password"
           name="password"
+          type="password" 
           className="form-control"
           placeholder="Password"
           onChange={handleChange}
           value={loginInfo.password}
           required
         />
-        <button>Log In</button>
+
+        <Button className="LoginForm-button" variant="primary"  type="submit" >Log In</Button>
       </form>
+      </Card.Body>
+      </Card>
     </div>
   );
 }
